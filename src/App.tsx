@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import ProductList from './components/ProductList';
 import Cart from './components/Cart';
+import Checkout from './components/Checkout';
 
 export type Product = {
   id: number;
@@ -63,10 +64,11 @@ function App() {
 
   return (
     <Router>
-      <nav style={{ display: "flex", gap: "1rem" }}>
-        <Link to="/">Home</Link>
+      {/* <nav style={{ display: "flex", gap: "1rem" }}>
+        <Link to="/">Products</Link>
         <Link to="/cart">Cart</Link>
-      </nav>
+        <Link to="/checkout">Checkout</Link>
+      </nav> */}
       <Routes>
         <Route 
           path="/" 
@@ -84,6 +86,14 @@ function App() {
               onAddToCart={addToCart} 
               onRemoveFromCart={removeFromCart}
             />} 
+        />
+        <Route
+          path="/checkout"
+          element={
+            <Checkout 
+              cart={cart}
+            />
+          }
         />
       </Routes>
     </Router>

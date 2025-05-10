@@ -1,4 +1,5 @@
 import type { CartItem, Product } from "../App";
+import { Link } from "react-router-dom";
 
 type Prop = {
     cart: CartItem[];
@@ -6,7 +7,7 @@ type Prop = {
     onRemoveFromCart: (product: Product) => void;
 }
 
-function getNumericPrice(item: CartItem): number {
+export function getNumericPrice(item: CartItem): number {
     return item.product.price.main + item.product.price.fractional / 100;
 }
 
@@ -15,6 +16,7 @@ function Cart({cart, onAddToCart, onRemoveFromCart}: Prop) {
 
     return (
         <div>
+            <Link to="/">Home</Link>
             <h2>Cart</h2>
             <ul>
                 {cart.map((item) => (
@@ -30,6 +32,11 @@ function Cart({cart, onAddToCart, onRemoveFromCart}: Prop) {
                 ))}
             </ul>
             <p><strong>Total: {total.toFixed(2)}</strong></p>
+            {cart.length > 0 && (
+                <Link to="/checkout">
+                    <button>Checkout</button>
+                </Link>
+            )}
         </div>
     );
 };

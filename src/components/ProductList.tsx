@@ -1,4 +1,5 @@
 import type { Product } from "../App";
+import { Link } from "react-router-dom";
 
 type Prop = {
     products: Product[];
@@ -23,6 +24,7 @@ function ProductList({products, onAddToCart}: Prop) {
                     </li>
                 ))}
             </ul>
+            <Link to="/cart">Cart</Link>
         </div>
     );
 }

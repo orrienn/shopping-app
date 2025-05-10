@@ -16,8 +16,8 @@ function Cart({cart, onAddToCart, onRemoveFromCart}: Prop) {
 
     return (
         <div>
-            <Link to="/">Home</Link>
-            <h2>Cart</h2>
+            <Link to="/">Lista Produktów</Link>
+            <h2>Koszyk</h2>
             <ul>
                 {cart.map((item) => (
                     <li key={item.product.id}>
@@ -31,10 +31,10 @@ function Cart({cart, onAddToCart, onRemoveFromCart}: Prop) {
                     </li>
                 ))}
             </ul>
-            <p><strong>Total: {total.toFixed(2)}</strong></p>
+            <p><strong>Suma: {total.toFixed(2)}</strong></p>
             {cart.length > 0 && (
                 <Link to="/checkout">
-                    <button>Checkout</button>
+                    <button>Podsumowanie zamówienia</button>
                 </Link>
             )}
         </div>

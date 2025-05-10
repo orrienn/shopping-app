@@ -64,11 +64,6 @@ function App() {
 
   return (
     <Router>
-      {/* <nav style={{ display: "flex", gap: "1rem" }}>
-        <Link to="/">Products</Link>
-        <Link to="/cart">Cart</Link>
-        <Link to="/checkout">Checkout</Link>
-      </nav> */}
       <Routes>
         <Route 
           path="/" 

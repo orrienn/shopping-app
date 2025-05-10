@@ -13,18 +13,18 @@ function ProductList({products, onAddToCart}: Prop) {
 
     return (
         <div>
-            <h2>Product List</h2>
+            <h2>Lista Produktów</h2>
             <ul>
                 {products.map((product) => (
                     <li key={product.id}>
                         {product.name} - {formatPrice(product)}
                         <button onClick={() => onAddToCart(product)}>
-                            Add to Cart
+                            Dodaj do koszyka
                         </button>
                     </li>
                 ))}
             </ul>
-            <Link to="/cart">Cart</Link>
+            <Link to="/cart">Koszyk</Link>
         </div>
     );
 }

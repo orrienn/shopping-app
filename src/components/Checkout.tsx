@@ -8,19 +8,26 @@ type Props = {
 
 function Checkout({ cart }: Props) {
     const total = cart.reduce((acc, item) => acc + getNumericPrice(item) * item.quantity, 0);
+
+    const handleSubmit = () => {
+        window.location.href = "/order-success.html";
+    };
+    
     return (
         <div>
-            <h2>Checkout</h2>
-            <p>Your order:</p>
+            <h2>Podsumowanie Zamówienia</h2>
             {cart.map((item) => (
                 <li key={item.product.id}>
                     {item.product.name} x {item.quantity}: {(getNumericPrice(item)*item.quantity).toFixed(2)}
                 </li>
             ))}
-            <p><strong>Total: {total.toFixed(2)}</strong></p>
+            <p><strong>Suma: {total.toFixed(2)}</strong></p>
             <Link to="/cart">
                 <button>Back to Cart</button>
             </Link>
+            <button onClick={handleSubmit}>
+                Złóż zamówienie
+            </button>
         </div>
     );
 };

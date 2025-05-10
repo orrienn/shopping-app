@@ -1,22 +1,11 @@
-import { useState, useEffect } from 'react';
+import type { Product } from "../App";
 
-type Product = {
-    id: number;
-    name: string;
-    price: {
-        main: number;
-        fractional: number;
-    };
-};
+type Prop = {
+    products: Product[];
+    onAddToCart: (product: Product) => void;
+}
 
-function ProductList() {
-    const [products, setProducts] = useState<Product[]>([]);
-
-    useEffect(() => {
-        fetch("/products.json")
-        .then((res) => res.json())
-        .then((data) => setProducts(data));
-    }, []);
+function ProductList({products, onAddToCart}: Prop) {
 
     const formatPrice = (p: Product): string =>
         `${p.price.main},${p.price.fractional}`;
@@ -25,9 +14,12 @@ function ProductList() {
         <div>
             <h2>Product List</h2>
             <ul>
-                {products.map((p) => (
-                    <li key={p.id}>
-                        {p.name} - {formatPrice(p)}
+                {products.map((product) => (
+                    <li key={product.id}>
+                        {product.name} - {formatPrice(product)}
+                        <button onClick={() => onAddToCart(product)}>
+                            Add to Cart
+                        </button>
                     </li>
                 ))}
             </ul>

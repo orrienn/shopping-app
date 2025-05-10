@@ -43,7 +43,7 @@ function App() {
   return (
     <div>
       <h1>Shop</h1>
-
+      <ProductList products={products} onAddToCart={addToCart} />
     </div>
   );
 }

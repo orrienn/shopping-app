@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import ProductList from './components/ProductList';
+import Cart from './components/Cart';
 
 export type Product = {
   id: number;
@@ -11,7 +12,7 @@ export type Product = {
   };
 };
 
-type CartItem = {
+export type CartItem = {
   product: Product;
   quantity: number;
 };
@@ -44,6 +45,7 @@ function App() {
     <div>
       <h1>Shop</h1>
       <ProductList products={products} onAddToCart={addToCart} />
+      <Cart cart={cart} onRemoveFromCart={() => true} />
     </div>
   );
 }

@@ -42,6 +42,25 @@ function App() {
     });
   };
 
+  const removeFromCart = (product: Product) => {
+    setCart((prevCart) => {
+      const exists = prevCart.find((item) => item.product.id == product.id);
+      if(exists) {
+        if(exists.quantity > 1) {
+          return prevCart.map((item) =>
+            item.product.id == product.id ? {...item, quantity: item.quantity - 1} : item
+          );
+        }
+        else {
+          return prevCart.filter((item) => item.product.id != product.id);
+        }
+      }
+      else {
+        return prevCart;
+      }
+    });
+  };
+
   return (
     <Router>
       <nav style={{ display: "flex", gap: "1rem" }}>
@@ -49,8 +68,23 @@ function App() {
         <Link to="/cart">Cart</Link>
       </nav>
       <Routes>
-        <Route path="/" element={<ProductList products={products} onAddToCart={addToCart} />} />
-        <Route path="/cart" element={<Cart cart={cart} onRemoveFromCart={() => true} />} />
+        <Route 
+          path="/" 
+          element={
+            <ProductList 
+              products={products} 
+              onAddToCart={addToCart} 
+            />} 
+        />
+        <Route 
+          path="/cart" 
+          element={
+            <Cart 
+              cart={cart} 
+              onAddToCart={addToCart} 
+              onRemoveFromCart={removeFromCart}
+            />} 
+        />
       </Routes>
     </Router>
   );

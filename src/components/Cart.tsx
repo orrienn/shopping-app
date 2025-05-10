@@ -18,7 +18,7 @@ function Cart({cart, onRemoveFromCart}: Prop) {
             <ul>
                 {cart.map((item) => (
                     <li key={item.product.id}>
-                        {item.product.name} - {item.quantity} - {getNumericPrice(item)}
+                        {item.product.name} x {item.quantity}: {(getNumericPrice(item)*item.quantity).toFixed(2)}
                         <button onClick={() => onRemoveFromCart(item.product.id)}>
                             Remove
                         </button>

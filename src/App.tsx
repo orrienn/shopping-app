@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useState, useEffect } from 'react'
 import './App.css'
 import ProductList from './components/ProductList';
@@ -42,11 +43,16 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>Shop</h1>
-      <ProductList products={products} onAddToCart={addToCart} />
-      <Cart cart={cart} onRemoveFromCart={() => true} />
-    </div>
+    <Router>
+      <nav style={{ display: "flex", gap: "1rem" }}>
+        <Link to="/">Home</Link>
+        <Link to="/cart">Cart</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<ProductList products={products} onAddToCart={addToCart} />} />
+        <Route path="/cart" element={<Cart cart={cart} onRemoveFromCart={() => true} />} />
+      </Routes>
+    </Router>
   );
 }
 

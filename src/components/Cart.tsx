@@ -31,7 +31,7 @@ function Cart({cart, onAddToCart, onRemoveFromCart}: Prop) {
                     </li>
                 ))}
             </ul>
-            <p><strong>Suma: {total.toFixed(2)}</strong></p>
+            <p><strong>Suma: {total.toFixed(2)} zł</strong></p>
             {cart.length > 0 && (
                 <Link to="/checkout">
                     <button>Podsumowanie zamówienia</button>

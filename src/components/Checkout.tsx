@@ -10,6 +10,7 @@ function Checkout({ cart }: Props) {
     const total = cart.reduce((acc, item) => acc + getNumericPrice(item) * item.quantity, 0);
 
     const handleSubmit = () => {
+        localStorage.setItem("order", JSON.stringify(cart));
         window.location.href = "/order-success.html";
     };
     
@@ -21,7 +22,7 @@ function Checkout({ cart }: Props) {
                     {item.product.name} x {item.quantity}: {(getNumericPrice(item)*item.quantity).toFixed(2)}
                 </li>
             ))}
-            <p><strong>Suma: {total.toFixed(2)}</strong></p>
+            <p><strong>Suma: {total.toFixed(2)} zł</strong></p>
             <Link to="/cart">
                 <button>Back to Cart</button>
             </Link>
